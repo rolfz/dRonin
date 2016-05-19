@@ -104,6 +104,9 @@
 /* PIOS Hardware Includes (Common) */
 #include <pios_heap.h>
 #include <pios_com.h>
+#if defined(PIOS_INCLUDE_MS4525) // added by Rolf Ziegler
+#include <pios_ms4525.h>
+#endif
 #if defined(PIOS_INCLUDE_MPXV7002)
 #include <pios_mpxv7002.h>
 #endif
