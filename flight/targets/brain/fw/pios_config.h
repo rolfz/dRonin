@@ -67,6 +67,10 @@
 #define PIOS_INCLUDE_ETASV3
 #define PIOS_I2C_ETASV3_ADAPTER pios_i2c_flexi_id
 
+/*added by RZ*/
+#define PIOS_INCLUDE_MPXV5004
+#define PIOS_INCLUDE_MPXV7002
+
 /* Com systems to include */
 #define PIOS_INCLUDE_COM
 #define PIOS_INCLUDE_COM_TELEM
