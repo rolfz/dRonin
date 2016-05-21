@@ -64,8 +64,10 @@
 #define PIOS_INCLUDE_MPU9250_BRAIN
 #define PIOS_INCLUDE_HMC5883
 #define PIOS_INCLUDE_HMC5983_I2C
-#define PIOS_INCLUDE_ETASV3
-#define PIOS_I2C_ETASV3_ADAPTER pios_i2c_flexi_id
+//#define PIOS_INCLUDE_ETASV3
+#define PIOS_INCLUDE_MPXV5004
+#define PIOS_INCLUDE_MPXV7002
+//#define PIOS_I2C_ETASV3_ADAPTER pios_i2c_flexi_id
 
 /* Com systems to include */
 #define PIOS_INCLUDE_COM

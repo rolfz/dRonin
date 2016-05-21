@@ -571,13 +571,13 @@ void PIOS_I2C_internal_er_irq_handler(void)
 #include "pios_flashfs_logfs_priv.h"
 
 static const struct flashfs_logfs_cfg flashfs_settings_cfg = {
-	.fs_magic = 0x3b1b14cf,
+	.fs_magic = 0x3bb141cf,
 	.arena_size = 0x00004000,	/* 64 * slot size */
 	.slot_size = 0x00000100,	/* 256 bytes */
 };
 
 static const struct flashfs_logfs_cfg flashfs_waypoints_cfg = {
-	.fs_magic = 0x93a566a4,
+	.fs_magic = 0x9a365a64,
 	.arena_size = 0x00004000,	/* 64 * slot size */
 	.slot_size = 0x00000040,	/* 64 bytes */
 };
@@ -588,7 +588,7 @@ static const struct flashfs_logfs_cfg flashfs_waypoints_cfg = {
 static const struct pios_flash_jedec_cfg flash_mx25_cfg = {
 	.expect_manufacturer = JEDEC_MANUFACTURER_MACRONIX,
 	.expect_memorytype   = 0x20,
-	.expect_capacity     = 0x16,
+	.expect_capacity     = 0x17,
 	.sector_erase        = 0x20,
 };
 #endif	/* PIOS_INCLUDE_FLASH_JEDEC */
@@ -636,7 +636,7 @@ static const struct pios_flash_chip pios_flash_chip_internal = {
 static const struct pios_flash_sector_range mx25_sectors[] = {
 	{
 		.base_sector = 0,
-		.last_sector = 1023,
+		.last_sector = 2047,
 		.sector_size = FLASH_SECTOR_4KB,
 	},
 };
@@ -668,9 +668,9 @@ static const struct pios_flash_partition pios_flash_partition_table[] = {
 		.label        = FLASH_PARTITION_LABEL_FW,
 		.chip_desc    = &pios_flash_chip_internal,
 		.first_sector = 5,
-		.last_sector  = 7,
+		.last_sector  = 11,
 		.chip_offset  = (4 * FLASH_SECTOR_16KB) + (1 * FLASH_SECTOR_64KB),
-		.size         = (7 - 5 + 1) * FLASH_SECTOR_128KB,
+		.size         = (11 - 5 + 1) * FLASH_SECTOR_128KB,
 	},
 
 	/* NOTE: sectors 8-11 of the internal flash are currently unallocated */
@@ -700,9 +700,9 @@ static const struct pios_flash_partition pios_flash_partition_table[] = {
 		.label        = FLASH_PARTITION_LABEL_LOG,
 		.chip_desc    = &pios_flash_chip_external,
 		.first_sector = 32,
-		.last_sector  = 1023,
+		.last_sector  = 2047,
 		.chip_offset  = (32 * FLASH_SECTOR_4KB),
-		.size         = (1023 - 32 + 1) * FLASH_SECTOR_4KB,
+		.size         = (2047 - 32 + 1) * FLASH_SECTOR_4KB,
 	},
 #endif	/* PIOS_INCLUDE_FLASH_JEDEC */
 };
@@ -860,6 +860,7 @@ static const struct pios_usart_cfg pios_usart1_cfg = {
 static const struct pios_usart_cfg pios_usart2_cfg = {
 	.regs = USART2,
 	.remap = GPIO_AF_USART2,
+
 	.irq = {
 		.init = {
 			.NVIC_IRQChannel = USART2_IRQn,
@@ -895,6 +896,7 @@ static const struct pios_usart_cfg pios_usart2_cfg = {
 static const struct pios_usart_cfg pios_usart3_cfg = {
 	.regs = USART3,
 	.remap = GPIO_AF_USART3,
+
 	.irq = {
 		.init = {
 			.NVIC_IRQChannel = USART3_IRQn,
@@ -930,6 +932,7 @@ static const struct pios_usart_cfg pios_usart3_cfg = {
 static const struct pios_usart_cfg pios_usart4_cfg = {
 	.regs = UART4,
 	.remap = GPIO_AF_UART4,
+
 	.irq = {
 		.init = {
 			.NVIC_IRQChannel = UART4_IRQn,
@@ -965,6 +968,7 @@ static const struct pios_usart_cfg pios_usart4_cfg = {
 static const struct pios_usart_cfg pios_usart5_cfg = {
 	.regs = UART5,
 	.remap = GPIO_AF_UART5,
+
 	.irq = {
 		.init = {
 			.NVIC_IRQChannel = UART5_IRQn,
